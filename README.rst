@@ -90,7 +90,7 @@ Subpackages
 -----------
 
 `pure_sklearn <https://github.com/Ibotta/pure-predict/tree/master/pure_sklearn>`__
-~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Prediction in pure python for a subset of ``scikit-learn`` estimators and transformers.
 
 - **estimators**
@@ -107,7 +107,7 @@ Prediction in pure python for a subset of ``scikit-learn`` estimators and transf
 Sparse data - supports a custom pure python sparse data object - sparse data is handled as would be expected by the relevent transformers and estimators
  
 `pure_fasttext <https://github.com/Ibotta/pure-predict/tree/master/pure_fasttext>`__
-~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Prediction in pure python for ``fasttext``.
 
 - **supervised** - predicts labels for supervised models; no support for quantized models (blocked by `this issue <https://github.com/facebookresearch/fastText/issues/984>`__)
