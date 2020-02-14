@@ -7,8 +7,15 @@ from setuptools import setup, find_packages
 DISTNAME = "pure-predict"
 VERSION = "0.0.1"
 DESCRIPTION = "Machine learning prediction in pure Python"
-with open("README.rst") as f:
-    LONG_DESCRIPTION = f.read()
+LONG_DESCRIPTION = ("""
+pure-predict: Machine learning prediction in pure Python
+========================================================
+
+``pure-predict`` speeds up and slims down machine learning prediction applications. It is 
+a foundational tool for serverless inference or small batch prediction with popular machine 
+learning frameworks like `scikit-learn <https://scikit-learn.org/stable/>`__ and `fasttext <https://fasttext.cc/>`__. 
+It implements the predict methods of these frameworks in pure Python.
+""")
 CLASSIFIERS = [
     "Intended Audience :: Developers",
     "Programming Language :: Python",
@@ -37,20 +44,10 @@ tests_require = [
     "pytest"
     ]
 
-def parse_description(description):
-    """
-    Strip figures and alt text from description
-    """
-    return "\n".join(
-        [
-        a for a in description.split("\n")
-        if ("figure::" not in a) and (":alt:" not in a)
-        ])
-
 setup(name=DISTNAME,
       version=VERSION,
       description=DESCRIPTION,
-      long_description=parse_description(LONG_DESCRIPTION),
+      long_description=LONG_DESCRIPTION,
       classifiers=CLASSIFIERS,
       author=AUTHOR,
       author_email=AUTHOR_EMAIL,
