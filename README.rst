@@ -189,8 +189,8 @@ Thanks to `David Mitchell <https://github.com/dlmitchell>`__ and `Andrew Tilley 
 
 .. |License| image:: https://img.shields.io/badge/License-Apache%202.0-blue.svg
    :target: https://opensource.org/licenses/Apache-2.0
-.. |Build Status| image:: https://travis-ci.org/Ibotta/pure-predict.png?branch=master
-   :target: https://travis-ci.org/Ibotta/pure-predict
+.. |Build Status| image:: https://travis-ci.com/Ibotta/pure-predict.png?branch=master
+   :target: https://travis-ci.com/Ibotta/pure-predict
 .. |PyPI Package| image:: https://badge.fury.io/py/pure-predict.svg
    :target: https://pypi.org/project/pure-predict/
 .. |Python Versions| image:: https://img.shields.io/pypi/pyversions/pure-predict
