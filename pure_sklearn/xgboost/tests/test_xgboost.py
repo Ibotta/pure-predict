@@ -24,6 +24,7 @@ def test_xgboost():
         for n_estimators in [2, 10]:
             for max_depth in [3, 10]:
                 clf = XGBClassifier(
+                    booster="gbtree",
                     random_state=5, 
                     n_estimators=n_estimators, 
                     max_depth=max_depth
