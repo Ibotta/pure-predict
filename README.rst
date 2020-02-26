@@ -20,7 +20,13 @@ The primary use case for ``pure-predict`` is the following scenario:
 #. Preferred infrastructure for the prediction service is either serverless (`AWS Lambda <https://aws.amazon.com/lambda/>`__) or a container service where the memory footprint of the container is constrained.
 #. The fitted model object's artifacts needed for prediction (coefficients, weights, vocabulary, decision tree artifacts, etc.) are relatively small (10s to 100s of MBs).
 
+.. figure:: https://github.com/Ibotta/pure-predict/blob/master/doc/images/diagram.png
+   :alt: diagram
+
 In this scenario, a container service with a large dependency footprint can be overkill for a microservice, particularly if the access patterns favor the pricing model of a serverless application. Additionally, for smaller models and single record predictions per request, the ``numpy`` and ``scipy`` functionality in the prediction methods of popular machine learning frameworks work against the application in terms of latency, `underperforming pure python <https://github.com/Ibotta/pure-predict/blob/master/examples/performance_rf.py>`__ in some cases.
+
+Check out the `blog post <https://medium.com/building-ibotta/predict-with-sklearn-20x-faster-9f2803944446>`__ 
+for more information on the motivation and use cases of ``pure-predict``.
 
 Package Details
 ---------------
