@@ -15,7 +15,7 @@ def parse_description(description):
         ])
 
 DISTNAME = "pure-predict"
-VERSION = "0.0.2"
+VERSION = "0.0.3"
 DESCRIPTION = "Machine learning prediction in pure Python"
 with open("README.rst") as f:
     LONG_DESCRIPTION = parse_description(f.read())
@@ -43,7 +43,7 @@ tests_require = [
     "scikit-learn>=0.20",
     "pandas",
     "numpy",
-    "fasttext",
+    "fasttext<=0.9.1",
     "pytest"
     ]
 

@@ -135,6 +135,7 @@ Dependency Notes
 -  ``pure_sklearn`` has been tested with ``scikit-learn`` versions >= 0.20 -- certain functionality may work with lower versions but are not guaranteed. Some functionality is explicitly not supported for certain ``scikit-learn`` versions and exceptions will be raised as appropriate.
 - ``xgboost`` requires version >= 0.82 for support with ``pure_sklearn``.
 - ``pure-predict`` is not supported with Python 2.
+- ``fasttext`` versions <= 0.9.1 have been tested.
 
 User Installation
 ~~~~~~~~~~~~~~~~~
