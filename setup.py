@@ -15,7 +15,7 @@ def parse_description(description):
         ])
 
 DISTNAME = "pure-predict"
-VERSION = "0.0.3"
+VERSION = "0.0.4"
 DESCRIPTION = "Machine learning prediction in pure Python"
 with open("README.rst") as f:
     LONG_DESCRIPTION = parse_description(f.read())
@@ -23,7 +23,6 @@ CLASSIFIERS = [
     "Intended Audience :: Developers",
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.5",
     "Programming Language :: Python :: 3.6",
     "Programming Language :: Python :: 3.7",
     "Programming Language :: Python :: 3.8",
@@ -36,7 +35,7 @@ DOWNLOAD_URL = "https://pypi.org/project/pure-predict/#files"
 PROJECT_URLS = {
     "Source Code": "https://github.com/Ibotta/pure-predict"
     }
-MIN_PYTHON_VERSION = "3.5"
+MIN_PYTHON_VERSION = "3.6"
 
 tests_require = [
     "xgboost>=0.82",

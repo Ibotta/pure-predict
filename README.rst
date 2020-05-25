@@ -127,7 +127,7 @@ Dependencies
 
 ``pure-predict`` requires:
 
--  `Python <https://www.python.org/>`__ (>= 3.5)
+-  `Python <https://www.python.org/>`__ (>= 3.6)
 
 Dependency Notes
 ~~~~~~~~~~~~~~~~
