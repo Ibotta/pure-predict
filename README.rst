@@ -4,7 +4,7 @@
 pure-predict: Machine learning prediction in pure Python
 ========================================================
 
-|License| |Build Status| |PyPI Package| |Python Versions|
+|License| |Build Status| |PyPI Package| |Downloads| |Python Versions|
 
 ``pure-predict`` speeds up and slims down machine learning prediction applications. It is 
 a foundational tool for serverless inference or small batch prediction with popular machine 
@@ -200,5 +200,7 @@ Thanks to `David Mitchell <https://github.com/dlmitchell>`__ and `Andrew Tilley 
    :target: https://travis-ci.com/Ibotta/pure-predict
 .. |PyPI Package| image:: https://badge.fury.io/py/pure-predict.svg
    :target: https://pypi.org/project/pure-predict/
+.. |Downloads| image:: https://pepy.tech/badge/pure-predict
+   :target: https://pepy.tech/project/pure-predict
 .. |Python Versions| image:: https://img.shields.io/pypi/pyversions/pure-predict
    :target: https://pypi.org/project/pure-predict/
