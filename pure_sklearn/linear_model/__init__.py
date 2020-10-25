@@ -15,5 +15,5 @@ __all__ = [
     "SGDClassifierPure",
     "PerceptronPure",
     "PassiveAggressiveClassifierPure",
-    "LinearClassifierMixinPure"
-    ]
+    "LinearClassifierMixinPure",
+]

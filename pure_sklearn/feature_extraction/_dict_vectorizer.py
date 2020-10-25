@@ -4,18 +4,17 @@ Dictionary vectorizer
 
 from collections.abc import Mapping
 
-from ..utils import (
-    check_types, sparse_list, 
-    convert_type, check_version
-    )
+from ..utils import check_types, sparse_list, convert_type, check_version
 
-class DictVectorizerPure():
+
+class DictVectorizerPure:
     """
     Pure python implementation of `DictVectorizer`.
 
     Args:
         estimator (sklearn estimator): fitted `DictVectorizer` object
     """
+
     def __init__(self, estimator):
         check_version(estimator)
         self.vocabulary_ = estimator.vocabulary_

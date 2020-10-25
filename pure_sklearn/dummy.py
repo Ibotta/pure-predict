@@ -7,14 +7,16 @@ from .utils import check_types, check_version
 
 __all__ = ["DummyClassifierPure"]
 
-class DummyClassifierPure():
-    """ 
-    Pure python implementation of `DummyClassifier`. Only supports 
-    'prior' strategy. 
+
+class DummyClassifierPure:
+    """
+    Pure python implementation of `DummyClassifier`. Only supports
+    'prior' strategy.
 
     Args:
         estimator (sklearn estimator): fitted `DummyClassifier` object
     """
+
     def __init__(self, estimator):
         check_version(estimator)
         if hasattr(estimator, "_strategy"):
@@ -27,12 +29,12 @@ class DummyClassifierPure():
         self.n_classes_ = estimator.n_classes_
         self.n_outputs_ = estimator.n_outputs_
         check_types(self)
-        
+
     def predict(self, X):
         return [self.class_prior_.index(max(self.class_prior_))] * len(X)
-    
+
     def predict_proba(self, X):
         return [self.class_prior_] * len(X)
-    
+
     def predict_log_proba(self, X):
         return apply_2d(self.predict_proba(X), safe_log)

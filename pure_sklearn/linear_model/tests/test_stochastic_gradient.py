@@ -10,23 +10,24 @@ from pure_sklearn.utils import shape
 MAX_ITER = 1000
 TOL = 1e-3
 METHODS = [
-    "decision_function", 
-    "predict", 
-    "predict_proba", 
+    "decision_function",
+    "predict",
+    "predict_proba",
     "predict_log_proba",
-    "_predict_proba_lr"
-    ]
+    "_predict_proba_lr",
+]
 LOSSES = [
-    "hinge", 
-    "log", 
-    "modified_huber", 
-    "squared_hinge", 
-    "perceptron", 
-    "squared_loss", 
-    "huber", 
-    "epsilon_insensitive", 
-    "squared_epsilon_insensitive"
-    ]
+    "hinge",
+    "log",
+    "modified_huber",
+    "squared_hinge",
+    "perceptron",
+    "squared_loss",
+    "huber",
+    "epsilon_insensitive",
+    "squared_epsilon_insensitive",
+]
+
 
 def test_sgd():
     X, y = load_iris(return_X_y=True)
@@ -35,10 +36,8 @@ def test_sgd():
         for loss in LOSSES:
             for fit_intercept in [True, False]:
                 clf = SGDClassifier(
-                    fit_intercept=fit_intercept, 
-                    max_iter=MAX_ITER, tol=TOL,  
-                    loss=loss
-                    )
+                    fit_intercept=fit_intercept, max_iter=MAX_ITER, tol=TOL, loss=loss
+                )
                 clf.fit(X, y_)
                 clf_ = convert_estimator(clf)
 

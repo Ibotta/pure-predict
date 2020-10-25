@@ -3,15 +3,15 @@ The :mod:`pure_sklearn.tree` module implements a variety of tree models
 """
 
 from ._classes import (
-    DecisionTreeClassifierPure, 
+    DecisionTreeClassifierPure,
     ExtraTreeClassifierPure,
-    DecisionTreeRegressorPure, 
-    ExtraTreeRegressorPure
-    )
+    DecisionTreeRegressorPure,
+    ExtraTreeRegressorPure,
+)
 
 __all__ = [
     "DecisionTreeClassifierPure",
     "ExtraTreeClassifierPure",
     "DecisionTreeRegressorPure",
-    "ExtraTreeRegressorPure"
-    ]
+    "ExtraTreeRegressorPure",
+]

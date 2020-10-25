@@ -8,7 +8,7 @@ in a python environment without any dependencies.
 """
 
 __all__ = [
-    "linear_model", 
+    "linear_model",
     "svm",
     "naive_bayes",
     "tree",
@@ -17,6 +17,5 @@ __all__ = [
     "dummy",
     "pipeline",
     "preprocessing",
-    "feature_extraction"
-    ]
-
+    "feature_extraction",
+]

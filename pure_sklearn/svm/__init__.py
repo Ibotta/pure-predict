@@ -7,4 +7,4 @@ from ._classes import LinearSVCPure
 
 __all__ = [
     "LinearSVCPure",
-    ]
+]

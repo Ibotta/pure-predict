@@ -4,6 +4,7 @@ Forest classifiers
 
 from ._bagging import _BaseBaggingPure
 
+
 class RandomForestClassifierPure(_BaseBaggingPure):
     """
     Pure python implementation of `RandomForestClassifier`.
@@ -11,7 +12,9 @@ class RandomForestClassifierPure(_BaseBaggingPure):
     Args:
         estimator (sklearn estimator): fitted `RandomForestClassifier` object
     """
+
     pass
+
 
 class ExtraTreesClassifierPure(_BaseBaggingPure):
     """
@@ -20,4 +23,5 @@ class ExtraTreesClassifierPure(_BaseBaggingPure):
     Args:
         estimator (sklearn estimator): fitted `ExtraTreesClassifier` object
     """
+
     pass

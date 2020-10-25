@@ -8,11 +8,8 @@ from pure_sklearn.utils import shape
 
 MAX_ITER = 1000
 TOL = 1e-3
-METHODS = [
-    "decision_function", 
-    "predict", 
-    "_predict_proba_lr"
-    ]
+METHODS = ["decision_function", "predict", "_predict_proba_lr"]
+
 
 def test_passive_aggressive():
     X, y = load_iris(return_X_y=True)
@@ -20,9 +17,8 @@ def test_passive_aggressive():
     for y_ in [y, (y == 0).astype(int), (y == 2).astype(int)]:
         for fit_intercept in [True, False]:
             clf = PassiveAggressiveClassifier(
-                fit_intercept=fit_intercept, 
-                max_iter=MAX_ITER, tol=TOL
-                )
+                fit_intercept=fit_intercept, max_iter=MAX_ITER, tol=TOL
+            )
             clf.fit(X, y_)
             clf_ = convert_estimator(clf)
 

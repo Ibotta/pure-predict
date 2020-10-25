@@ -9,12 +9,13 @@ from pure_sklearn.utils import shape, tosparse
 SOLVER = "lbfgs"
 MAX_ITER = 1000
 METHODS = [
-    "decision_function", 
-    "predict", 
-    "predict_proba", 
+    "decision_function",
+    "predict",
+    "predict_proba",
     "predict_log_proba",
-    "_predict_proba_lr"
-    ]
+    "_predict_proba_lr",
+]
+
 
 def test_logistic():
     X, y = load_iris(return_X_y=True)
@@ -24,11 +25,11 @@ def test_logistic():
         for multi_class in ["ovr", "multinomial"]:
             for fit_intercept in [True, False]:
                 clf = LogisticRegression(
-                    solver=SOLVER, 
-                    multi_class=multi_class, 
+                    solver=SOLVER,
+                    multi_class=multi_class,
                     fit_intercept=fit_intercept,
-                    max_iter=MAX_ITER
-                    )
+                    max_iter=MAX_ITER,
+                )
                 clf.fit(X, y_)
                 clf_ = convert_estimator(clf)
 

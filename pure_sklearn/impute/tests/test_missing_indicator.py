@@ -6,6 +6,7 @@ from sklearn.datasets import load_iris
 from pure_sklearn.map import convert_estimator
 from pure_sklearn.utils import shape
 
+
 def test_missing_indicator():
     X, y = load_iris(return_X_y=True)
     for missing_values in [np.nan, X[0][0], X[-1][1]]:
@@ -15,10 +16,8 @@ def test_missing_indicator():
         X_ = X.tolist()
         for features in ["missing-only", "all"]:
             imp = MissingIndicator(
-                features=features,
-                missing_values=missing_values,
-                error_on_new=False
-                )
+                features=features, missing_values=missing_values, error_on_new=False
+            )
             imp.fit(X)
             imp_ = convert_estimator(imp)
 

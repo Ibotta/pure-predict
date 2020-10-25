@@ -7,11 +7,8 @@ from sklearn.datasets import load_iris
 from pure_sklearn.map import convert_estimator
 from pure_sklearn.utils import shape
 
-METHODS = [
-    "predict",
-    "predict_proba",
-    "predict_log_proba"
-    ]
+METHODS = ["predict", "predict_proba", "predict_log_proba"]
+
 
 def test_extra_trees():
     X, y = load_iris(return_X_y=True)
@@ -21,13 +18,13 @@ def test_extra_trees():
             for max_depth in [5, 10, None]:
                 clf = ExtraTreesClassifier(
                     bootstrap=False,
-                    n_estimators=n_estimators, 
-                    max_depth=max_depth, 
-                    random_state=5
-                    )
+                    n_estimators=n_estimators,
+                    max_depth=max_depth,
+                    random_state=5,
+                )
                 clf.fit(X, y_)
                 clf_ = convert_estimator(clf)
-            
+
                 for method in METHODS:
                     with warnings.catch_warnings():
                         warnings.simplefilter("ignore")

@@ -37,13 +37,9 @@ METHOD = "predict_proba"
 FEATURE_MULT = 1
 
 X, y = load_iris(return_X_y=True)
-X = np.hstack([X]*FEATURE_MULT)
+X = np.hstack([X] * FEATURE_MULT)
 X_ = X.tolist()
-clf = LogisticRegression(
-    solver=SOLVER, 
-    multi_class=MULTI_CLASS, 
-    max_iter=MAX_ITER
-    )
+clf = LogisticRegression(solver=SOLVER, multi_class=MULTI_CLASS, max_iter=MAX_ITER)
 clf.fit(X, y)
 clf_ = convert_estimator(clf)
 performance_comparison(clf, clf_, X)

@@ -11,7 +11,8 @@ METHODS = [
     "predict",
     "predict_proba",
     "predict_log_proba",
-    ]
+]
+
 
 def test_decision_tree_clf():
     X, y = load_iris(return_X_y=True)
@@ -19,13 +20,10 @@ def test_decision_tree_clf():
     X_sparse = tosparse(X_)
     for y_ in [y, (y == 0).astype(int), (y == 2).astype(int)]:
         for max_depth in [5, 10, None]:
-            clf = DecisionTreeClassifier(
-                max_depth=max_depth, 
-                random_state=5
-                )
+            clf = DecisionTreeClassifier(max_depth=max_depth, random_state=5)
             clf.fit(X, y_)
             clf_ = convert_estimator(clf)
-            
+
             for method in METHODS:
                 with warnings.catch_warnings():
                     warnings.simplefilter("ignore")
@@ -35,16 +33,14 @@ def test_decision_tree_clf():
                 assert np.allclose(scores, scores_, equal_nan=True)
                 assert np.allclose(scores, scores_sparse, equal_nan=True)
 
+
 def test_decision_tree_reg():
     X, y = load_iris(return_X_y=True)
     X_ = X.tolist()
     X_sparse = tosparse(X_)
     for y_ in [(y == 0).astype(int), (y == 2).astype(int)]:
         for max_depth in [5, 10, None]:
-            clf = DecisionTreeRegressor(
-                max_depth=max_depth,
-                random_state=5
-                )
+            clf = DecisionTreeRegressor(max_depth=max_depth, random_state=5)
             clf.fit(X, y_)
             clf_ = convert_estimator(clf)
 

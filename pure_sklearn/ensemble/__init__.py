@@ -10,5 +10,5 @@ __all__ = [
     "RandomForestClassifierPure",
     "BaggingClassifierPure",
     "ExtraTreesClassifierPure",
-    "GradientBoostingClassifierPure"
-    ]
+    "GradientBoostingClassifierPure",
+]

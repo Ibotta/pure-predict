@@ -9,11 +9,10 @@ DATA_LOC = "data/supervised.txt"
 SENTENCE = [
     "this is text",
     "this is more text",
-    "this   bananas text"
-    "here is  text with    some   space  ",
-    "   text's are fun with this is text"
-    " this IS Text TEXT "
-    ]
+    "this   bananas text" "here is  text with    some   space  ",
+    "   text's are fun with this is text" " this IS Text TEXT ",
+]
+
 
 def test_supervised_predict():
     model = fasttext.train_supervised(DATA_LOC)
@@ -25,6 +24,7 @@ def test_supervised_predict():
                 wv_ = model_.predict(sentence, k=k, threshold=threshold)
                 assert wv[0] == wv_[0]
                 assert np.allclose(wv[1], wv_[1], atol=1e-4)
+
 
 def test_supervised_sentence():
     model = fasttext.train_supervised(DATA_LOC)

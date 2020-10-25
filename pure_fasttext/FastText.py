@@ -7,21 +7,24 @@ from operator import mul
 
 EOS = "</s>"
 
+
 def l2_norm(arr):
-   """ Computes l2 norm of input list """
-   return sqrt(sum(map(lambda x: x**2, arr)))
+    """ Computes l2 norm of input list """
+    return sqrt(sum(map(lambda x: x ** 2, arr)))
+
 
 def div_norm(arr):
-   """ Divides input list by l2 norm """
-   norm_value = l2_norm(arr)
-   if norm_value > 0:
-       return list(map(lambda x: x * ( 1.0 / norm_value), arr))
-   else:
-       return arr
+    """ Divides input list by l2 norm """
+    norm_value = l2_norm(arr)
+    if norm_value > 0:
+        return list(map(lambda x: x * (1.0 / norm_value), arr))
+    else:
+        return arr
 
-def dot(A,B):
-    """ 
-    Computes dot product between input 1-D list 'A' 
+
+def dot(A, B):
+    """
+    Computes dot product between input 1-D list 'A'
     and 2-D list B.
     """
     arr = []
@@ -30,30 +33,40 @@ def dot(A,B):
         arr.append(val)
     return arr
 
+
 def sfmax(arr):
     """ Computes softmax of input list """
     expons = list(map(lambda x: exp(x - max(arr)), arr))
     return list(map(lambda x: x / float(sum(expons)), expons))
 
+
 def argsort(seq):
     """ Computes argsort of input list """
     return sorted(range(len(seq)), key=seq.__getitem__)
 
+
 def average(l):
     """ Computes average of 2-D list """
     llen = len(l)
-    def divide(x): return x / float(llen)
+
+    def divide(x):
+        return x / float(llen)
+
     return list(map(divide, map(sum, zip(*l))))
+
 
 class _FastText(object):
     """
-    Equivalent to fasttext `_FastText` class, implemented in 
+    Equivalent to fasttext `_FastText` class, implemented in
     pure python.
     """
+
     def __init__(self, model):
-        self.supervised_ = model.label in model.get_labels()[0] 
+        self.supervised_ = model.label in model.get_labels()[0]
         if (model.maxn != 0) and not self.supervised_:
-            raise ValueError("Only maxn=0 is supported for unsupervised mode (no subwords support).")
+            raise ValueError(
+                "Only maxn=0 is supported for unsupervised mode (no subwords support)."
+            )
         if self.supervised_ and (model.loss.name not in ("softmax")):
             raise Exception("Only 'softmax' loss is supported for supervised mode.")
         self.words_ = model.get_words()
@@ -72,7 +85,7 @@ class _FastText(object):
         if idx >= 0:
             return self.get_input_vector(idx)
         else:
-            return [0.0]*self.dim_
+            return [0.0] * self.dim_
 
     def get_sentence_vector(self, text):
         """
@@ -81,25 +94,23 @@ class _FastText(object):
         whitespace (space, newline, tab, vertical tab) and the control
         characters carriage return, formfeed and the null character.
         """
-        if text.find('\n') != -1:
-            raise ValueError(
-                "predict processes one line at a time (remove \'\\n\')"
-            )
+        if text.find("\n") != -1:
+            raise ValueError("predict processes one line at a time (remove '\\n')")
         text += "\n"
 
         if self.supervised_:
             raw_words = [
-                self.get_word_vector(word) 
+                self.get_word_vector(word)
                 for word in (text.split() + [EOS])
                 if word in self.words_
-                ]
+            ]
             return average(raw_words)
         else:
             raw_words = [
-                self.get_word_vector(word) 
+                self.get_word_vector(word)
                 for word in text.split()
                 if word in self.words_
-                ]
+            ]
             return average(list(map(div_norm, raw_words)))
 
     def get_word_id(self, word):
@@ -121,14 +132,11 @@ class _FastText(object):
     def _predict(self, text, k=1, threshold=0.0):
         """ Guts of prediction method """
         A = self.get_sentence_vector(text)
-        if self.loss_ == "softmax": 
+        if self.loss_ == "softmax":
             preds = sfmax(dot(A, self.output_matrix_))
         else:
             raise ValueError("Predict is not supported for loss: {}".format(self.loss_))
-        argsorted = [
-            i for i in argsort(preds)[::-1] 
-            if preds[i] >= threshold
-            ]
+        argsorted = [i for i in argsort(preds)[::-1] if preds[i] >= threshold]
         pred_labels = tuple([self.labels_[i] for i in argsorted[:k]])
         pred_scores = [preds[i] for i in argsorted[:k]]
         return (pred_labels, pred_scores)
@@ -146,7 +154,8 @@ class _FastText(object):
             all_labels = []
             all_probs = []
             all_labels, all_probs = self.f.multilinePredict(
-                text, k, threshold, on_unicode_error)
+                text, k, threshold, on_unicode_error
+            )
             for text_ in text:
                 labels, probs = self._predict(text_, k, threshold)
                 all_labels.append(labels)
@@ -154,4 +163,3 @@ class _FastText(object):
             return all_labels, all_probs
         else:
             return self._predict(text, k, threshold)
-

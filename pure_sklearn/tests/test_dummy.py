@@ -10,11 +10,14 @@ METHODS = [
     "predict",
     "predict_proba",
     "predict_log_proba",
-    ]
+]
+
 
 def test_import():
     from pure_sklearn import dummy
+
     assert True
+
 
 def test_dummy():
     X, y = load_iris(return_X_y=True)
@@ -23,7 +26,7 @@ def test_dummy():
         clf = DummyClassifier(strategy="prior")
         clf.fit(X, y_)
         clf_ = convert_estimator(clf)
-            
+
         for method in METHODS:
             scores = getattr(clf, method)(X)
             scores_ = getattr(clf_, method)(X_)

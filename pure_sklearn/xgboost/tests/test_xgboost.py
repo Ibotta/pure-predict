@@ -11,10 +11,8 @@ from sklearn.datasets import load_iris
 
 from pure_sklearn.map import convert_estimator
 
-METHODS = [
-    "predict",
-    "predict_proba"
-    ]
+METHODS = ["predict", "predict_proba"]
+
 
 @pytest.mark.skipif("xgboost" not in sys.modules, reason="requires xgboost")
 def test_xgboost():
@@ -25,14 +23,13 @@ def test_xgboost():
             for max_depth in [3, 10]:
                 clf = XGBClassifier(
                     booster="gbtree",
-                    random_state=5, 
-                    n_estimators=n_estimators, 
-                    max_depth=max_depth
-                    )
+                    random_state=5,
+                    n_estimators=n_estimators,
+                    max_depth=max_depth,
+                )
                 clf.fit(X, y_)
                 clf_ = convert_estimator(clf)
                 for method in METHODS:
                     scores = getattr(clf, method)(X)
                     scores_ = getattr(clf_, method)(X_)
                     assert np.allclose(scores, scores_, equal_nan=True)
-

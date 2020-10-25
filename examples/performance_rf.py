@@ -39,13 +39,9 @@ MAX_DEPTH = None
 FEATURE_MULT = 100
 
 X, y = load_iris(return_X_y=True)
-X = np.hstack([X]*FEATURE_MULT)
+X = np.hstack([X] * FEATURE_MULT)
 X_ = X.tolist()
-clf = RandomForestClassifier(
-    n_estimators=N_ESTIMATORS, 
-    max_depth=MAX_DEPTH
-    )
+clf = RandomForestClassifier(n_estimators=N_ESTIMATORS, max_depth=MAX_DEPTH)
 clf.fit(X, y)
 clf_ = convert_estimator(clf)
 performance_comparison(clf, clf_, X)
-

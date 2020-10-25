@@ -37,18 +37,22 @@ MAPPING = {
     "CountVectorizer": "pure_sklearn.feature_extraction.text.CountVectorizerPure",
     "TfidfTransformer": "pure_sklearn.feature_extraction.text.TfidfTransformerPure",
     "HashingVectorizer": "pure_sklearn.feature_extraction.text.HashingVectorizerPure",
-    }
+}
+
 
 def _instantiate_class(module, name):
     module = __import__(module, fromlist=[name])
     return getattr(module, name)
+
 
 def convert_estimator(est, min_version=None):
     """ Convert scikit-learn estimator to its pure_sklearn counterpart """
     est_name = est.__class__.__name__
     pure_est_name = MAPPING.get(est_name)
     if pure_est_name is None:
-        raise ValueError("Cannot find 'pure_sklearn' counterpart for {}".format(est_name))
+        raise ValueError(
+            "Cannot find 'pure_sklearn' counterpart for {}".format(est_name)
+        )
     module = ".".join(pure_est_name.split(".")[:-1])
     name = pure_est_name.split(".")[-1]
     return _instantiate_class(module, name)(est)

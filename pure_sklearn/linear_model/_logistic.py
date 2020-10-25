@@ -6,6 +6,7 @@ from ._base import LinearClassifierMixinPure
 from ..base import sfmax, safe_log
 from ..utils import ndim, check_types, check_version
 
+
 class LogisticRegressionPure(LinearClassifierMixinPure):
     """
     Pure python implementation of `LogisticRegression`.
@@ -13,15 +14,17 @@ class LogisticRegressionPure(LinearClassifierMixinPure):
     Args:
         estimator (sklearn estimator): fitted `LogisticRegression` object
     """
+
     def __init__(self, estimator):
-        check_version(estimator)         
+        check_version(estimator)
         super().__init__(estimator=estimator)
         check_types(self)
-        
+
     def predict_proba(self, X):
-        ovr = (self.multi_class in ["ovr", "warn"] or
-               (self.multi_class == 'auto' and (len(self.classes_) <= 2 or
-                                                self.solver == 'liblinear')))
+        ovr = self.multi_class in ["ovr", "warn"] or (
+            self.multi_class == "auto"
+            and (len(self.classes_) <= 2 or self.solver == "liblinear")
+        )
         if ovr:
             return super()._predict_proba_lr(X)
         else:
@@ -38,7 +41,4 @@ class LogisticRegressionPure(LinearClassifierMixinPure):
         The returned estimates for all classes are ordered by the
         label of classes.
         """
-        return [
-            list(map(safe_log, a)) 
-            for a in self.predict_proba(X)
-            ]
+        return [list(map(safe_log, a)) for a in self.predict_proba(X)]

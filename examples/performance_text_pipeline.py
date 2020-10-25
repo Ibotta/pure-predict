@@ -25,9 +25,7 @@ Difference: 0.04527621834233559
 import numpy as np
 
 from sklearn.pipeline import Pipeline, FeatureUnion
-from sklearn.feature_extraction.text import (
-    HashingVectorizer, TfidfVectorizer
-    )
+from sklearn.feature_extraction.text import HashingVectorizer, TfidfVectorizer
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.datasets import fetch_20newsgroups
 
@@ -37,23 +35,13 @@ from pure_sklearn.map import convert_estimator
 N_ESTIMATORS = 100
 MAX_DEPTH = None
 
-categories = [
-    "rec.autos",
-    "sci.space"
-    ]
-X, y = fetch_20newsgroups(
-    subset="train", categories=categories,
-    return_X_y=True
-    )
+categories = ["rec.autos", "sci.space"]
+X, y = fetch_20newsgroups(subset="train", categories=categories, return_X_y=True)
 vec1 = HashingVectorizer()
 vec2 = TfidfVectorizer()
 feats = FeatureUnion([("vec1", vec1), ("vec2", vec2)])
-rf = RandomForestClassifier(
-    n_estimators=N_ESTIMATORS, 
-    max_depth=MAX_DEPTH
-    )
+rf = RandomForestClassifier(n_estimators=N_ESTIMATORS, max_depth=MAX_DEPTH)
 clf = Pipeline(steps=[("feats", feats), ("rf", rf)])
 clf.fit(X, y)
 clf_ = convert_estimator(clf)
 performance_comparison(clf, clf_, X)
-
