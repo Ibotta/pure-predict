@@ -43,7 +43,7 @@ tests_require = [
     "xgboost>=0.82",
     "scikit-learn>=0.20",
     "pandas",
-    "numpy",
+    "numpy>=1.16.5",
     "fasttext<=0.9.1",
     "pytest",
 ]
