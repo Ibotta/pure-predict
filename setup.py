@@ -41,7 +41,7 @@ MIN_PYTHON_VERSION = "3.6"
 
 tests_require = [
     "xgboost>=0.82",
-    "scikit-learn>=0.20",
+    "scikit-learn>=0.20,<0.24",
     "pandas",
     "numpy>=1.16.5",
     "fasttext<=0.9.1",
